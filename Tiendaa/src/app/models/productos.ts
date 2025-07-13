@@ -1,3 +1,4 @@
+import { Categoria } from "../services/categoria.service"; 
 
 
 export class Producto {
@@ -7,7 +8,7 @@ export class Producto {
   descripcion: string;
   precio: number;
   stock: number;
-  categoria: string;  
+  categoria: Categoria;   
   imagen?: string;
 
   constructor(
@@ -16,7 +17,7 @@ export class Producto {
     descripcion: string,
     precio: number,
     stock: number,
-    categoria: string,  
+    categoria: Categoria,  
     imagen?: string
   ) {
     this.nombre = nombre;
