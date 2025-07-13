@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService, Categoria } from '../../services/categoria.service';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-categoria',
@@ -14,7 +15,9 @@ export class CategoriaComponent implements OnInit {
   nombreError: string = '';
   descripcionError: string = '';
 
-  constructor(private categoriaService: CategoriaService) {}
+  constructor(
+    private categoriaService: CategoriaService,
+    private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.obtenerCategorias();
@@ -23,6 +26,7 @@ export class CategoriaComponent implements OnInit {
   obtenerCategorias(): void {
     this.categoriaService.obtenerCategorias().subscribe(data => {
       this.categorias = data;
+      this.cdr.detectChanges(); 
     });
   }
 

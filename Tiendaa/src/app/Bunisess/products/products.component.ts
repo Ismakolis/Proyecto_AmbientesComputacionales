@@ -4,7 +4,7 @@ import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../../models/productos';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService, Usuario } from '../../services/auth.service';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -19,6 +19,7 @@ export class ProductsComponent {
   constructor(
     private _productoService: ProductoService,
     private toastr: ToastrService,
+    private cdr: ChangeDetectorRef
     
   ) {}
 
@@ -30,6 +31,7 @@ export class ProductsComponent {
     this._productoService.getProductos().subscribe(
       data => {
         this.listProductos = data;
+        this.cdr.detectChanges(); 
       },
       error => {
         console.error('Error al obtener productos:', error);

@@ -4,8 +4,8 @@ import { Producto } from '../../models/productos';
 import { MisProductosService } from '../../services/misProductos';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-//import { CategoriaService,Categoria } from '../../services/categoria.service';
-
+import { CategoriaService,Categoria } from '../../services/categoria.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-mis-productos',
@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MisProductosComponent {
   listProductos: Producto[] = [];
-  //categorias: Categoria[] = [];
+  categorias: Categoria[] = [];
 
 
 
@@ -26,12 +26,13 @@ export class MisProductosComponent {
   constructor(
     private _productoService: MisProductosService,
     private toastr: ToastrService,
-    //private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
 
-   // this.obtenerCategorias();
+   this.obtenerCategorias();
 
   this.obtenerProductos();
    
@@ -41,7 +42,7 @@ export class MisProductosComponent {
     this._productoService.getProductos().subscribe(
       data => {
         this.listProductos = data;
-  
+        this.cdr.detectChanges(); 
       
   
         this.setPagination();
@@ -83,17 +84,18 @@ export class MisProductosComponent {
     return this.listProductos.slice(start, start + this.itemsPerPage);
   }
 
-  //obtenerCategorias(): void {
-  //  this.categoriaService.obtenerCategorias().subscribe(data => {
-  //    this.categorias = data;
-  //  });
- // }
+  obtenerCategorias(): void {
+   this.categoriaService.obtenerCategorias().subscribe(data => {
+     this.categorias = data;
+     this.cdr.detectChanges(); 
+    });
+  }
   
-  //getCategoriaNombre(categoriaId: string): string {
-    //const categoria = this.categorias.find(cat => cat._id === categoriaId);
-    //return categoria ? categoria.nombre : 'Sin categoría';
+  getCategoriaNombre(categoriaId: string): string {
+    const categoria = this.categorias.find(cat => cat._id === categoriaId);
+    return categoria ? categoria.nombre : 'Sin categoría';
     
-  //}
+  }
   
   
   

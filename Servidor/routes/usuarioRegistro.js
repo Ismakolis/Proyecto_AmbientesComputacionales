@@ -1,0 +1,8 @@
+//rutas para misProductos
+const express = require('express');
+const router = express.Router();
+const usuarioLoginController = require('../controllers/usuarioRegistroController');
+
+router.post('/register', usuarioLoginController.crearUsuario);
+
+module.exports = router;
