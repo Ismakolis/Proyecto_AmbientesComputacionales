@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<section class="text-center mt-10 mb-6 px-4 animate-fadeIn">
+  <h2 class="text-3xl font-bold text-gray-800 mb-2">Destacados de la semana</h2>
+  <p class="text-gray-600 text-sm">Explora nuestros arreglos florales más populares y recomendados.</p>
+  <br>
+</section>
+<div class="px-4 md:px-20 mb-10">
+  <app-carrousel></app-carrousel>
+</div>
+
+<div class="background">
+
+  <!-- Descripción de categorías -->
+  <section class="seccion-principal animate-fadeIn">
+    <h2 class="titulo-seccion">Explora nuestras categorías</h2>
+    <p class="texto-central mb-6">
+      Tenemos el arreglo ideal para cada momento. Descubre nuestras colecciones cuidadosamente diseñadas para hacer sonreír a quien más quieres.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-10">
+      <div *ngFor="let categoria of categorias" class="bg-white shadow-lg rounded-lg p-6 text-center hover:shadow-xl transition duration-300">
+        <img [src]="categoria.icono" [alt]="categoria.titulo" class="mx-auto h-32 mb-4 drop-shadow-md rounded-full p-2 bg-gray-50">
+
+        <h3 class="text-lg font-semibold" [ngClass]="categoria.color">{{ categoria.titulo }}</h3>
+        <p class="text-sm text-gray-600">{{ categoria.descripcion }}</p>
+      </div>
+    </div>
+  
+  </section>
+
+  <!-- Beneficios de las flores -->
+  <section class="seccion-clara animate-fadeUp mt-16">
+    <h2 class="titulo-seccion">¿Por qué regalar flores?</h2>
+    <div class="grid-valores">
+      <div class="valor-item">
+        <h3 class="valor">Conexión emocional</h3>
+        <p>Las flores comunican amor, gratitud y afecto sin palabras.</p>
+      </div>
+      <div class="valor-item">
+        <h3 class="valor">Impacto positivo</h3>
+        <p>Estudios demuestran que tener flores mejora el estado de ánimo y reduce el estrés.</p>
+      </div>
+      <div class="valor-item">
+        <h3 class="valor">Diseño atemporal</h3>
+        <p>Un arreglo floral embellece cualquier espacio con estilo y elegancia.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+
+
+<app-footer></app-footer>

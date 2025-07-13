@@ -1,0 +1,206 @@
+/* Fondo general con degradado suave y textura ligera */
+.background {
+  background: linear-gradient(135deg, #f9f7f6, #e4d8d4);
+  padding: 5rem 2rem;
+  color: #4a3c3c;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Títulos grandes con fuente elegante */
+.titulo {
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: #b33a3a;
+  margin: 1rem 0 1.5rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Subtítulos suaves y legibles */
+.subtitulo {
+  font-size: 1.3rem;
+  color: #6b5151;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Secciones con espacio y centrado */
+.seccion-principal {
+  margin-top: 3rem;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Carrusel con separación */
+.seccion-carousel {
+  margin: 4rem 0;
+}
+
+/* Secciones claras con sombra sutil y bordes redondeados */
+.seccion-clara {
+  background-color: #fff9f7;
+  border-radius: 1.25rem;
+  padding: 3rem 2.5rem;
+  margin: 5rem auto;
+  max-width: 1100px;
+  box-shadow: 0 12px 24px rgba(180, 140, 140, 0.15);
+  color: #5a4545;
+  font-size: 1.1rem;
+  line-height: 1.65;
+}
+
+/* Títulos de sección con estilo consistente */
+.titulo-seccion {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #a53636;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+/* Grid para valores con espacio y sombra */
+.grid-valores {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .grid-valores {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Cada valor estilizado como tarjeta */
+.valor-item {
+  background: #fdf6f6;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(180, 140, 140, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.valor-item:hover {
+  transform: translateY(-8px);
+}
+
+/* Texto de valor con peso y color */
+.valor {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #7a3a3a;
+}
+
+/* Texto central para párrafos */
+.texto-central {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  color: #5a4545;
+  line-height: 1.7;
+}
+
+/* Botones elegantes con sombra */
+.boton {
+  display: inline-block;
+  margin-top: 2.5rem;
+  background-color: #a53535;
+  color: white;
+  padding: 0.9rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(165, 53, 53, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boton:hover {
+  background-color: #872d2d;
+  box-shadow: 0 8px 16px rgba(135, 45, 45, 0.7);
+  cursor: pointer;
+}
+
+/* Botón CTA final con mayor énfasis */
+.boton-cta {
+  background: linear-gradient(90deg, #b33a3a, #7f1c1c);
+  box-shadow: 0 8px 20px rgba(179, 58, 58, 0.8);
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+}
+
+.boton-cta:hover {
+  background: linear-gradient(90deg, #7f1c1c, #b33a3a);
+}
+
+/* Animaciones mejoradas con easing suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fadeUp {
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.animate-fadeLeft {
+  animation: fadeLeft 1s ease-out forwards;
+}
+
+.animate-fadeRight {
+  animation: fadeRight 1s ease-out forwards;
+}

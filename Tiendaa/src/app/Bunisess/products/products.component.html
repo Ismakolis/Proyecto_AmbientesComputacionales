@@ -1,0 +1,72 @@
+<h2 class="titulo-productos">Listado de Productos</h2>
+
+<div class="container page-wrapper" *ngIf="listProductos.length > 0">
+  <div class="page-inner">
+    <div class="row">
+      <div class="el-wrapper" *ngFor="let producto of listProductos" style="position: relative;">
+        
+        <!-- Etiqueta Oferta en la esquina superior de la tarjeta -->
+        <ng-container *ngIf="producto.oferta > 0">
+          <span style="
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e63946;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          ">
+            Oferta ${{ (producto.precio * (1 - producto.oferta / 100)).toFixed(2) }}
+          </span>
+        </ng-container>
+
+        <div class="box-up">
+          <img
+            class="img"
+            *ngIf="producto.imagen"
+            [src]="'http://localhost:4000/api/misProductos/get-imagen/' + producto.imagen"
+            [alt]="producto.nombre"
+          />
+          <div class="img-info">
+            <div class="info-inner">
+              <span class="p-name">{{ producto.nombre }}</span>
+              <span class="p-company">{{ producto.descripcion }}</span>
+            </div>
+            <div class="a-size">Stock: <span class="size">{{ producto.stock }}</span></div>
+          </div>
+        </div>
+
+        <div class="box-down">
+          <div class="h-bg">
+            <div class="h-bg-inner"></div>
+          </div>
+
+          <a class="cart"  (click)="agregarAlCarrito(producto)">
+            <span class="price">
+              <ng-container *ngIf="producto.oferta > 0; else mostrarPrecioNormal">
+                <span style="text-decoration: line-through; color: #999;">
+                  ${{ producto.precio.toFixed(2) }}
+                </span>
+              </ng-container>
+              <ng-template #mostrarPrecioNormal>
+                ${{ producto.precio.toFixed(2) }}
+              </ng-template>
+            </span>
+            <span class="add-to-cart">
+              <span class="txt">
+                <ng-container *ngIf="!cargandoAgregar[producto._id || '']">Añadir al carrito</ng-container>
+                <ng-container *ngIf="cargandoAgregar[producto._id || '']">Agregando...</ng-container>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 *ngIf="listProductos.length == 0">No hay Productos para mostrar</h5>

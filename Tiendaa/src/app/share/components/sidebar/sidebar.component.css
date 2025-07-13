@@ -1,0 +1,29 @@
+.sidebar-base {
+    position: fixed;
+    z-index: 20;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 4rem;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    width: 16rem; /* 64 = 16rem */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateX(0);
+    background-color: #fef6e4 !important;
+  }
+  
+  .sidebar-base.hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+  @media (min-width: 1024px) {
+    #sidebar {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+      pointer-events: auto !important;
+    }
+  }

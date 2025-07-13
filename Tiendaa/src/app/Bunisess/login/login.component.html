@@ -1,0 +1,72 @@
+<div class="min-h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 py-10"
+     style="background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80');">
+  
+  <div class="backdrop-blur-sm bg-white/80 rounded-xl shadow-xl w-full max-w-6xl p-8 grid md:grid-cols-2 items-center gap-10">
+
+    <!-- Texto lateral -->
+    <div>
+      <h2 class="text-3xl lg:text-5xl font-bold text-slate-900">
+        Bienvenido a Floristería Aroma
+      </h2>
+      <p class="mt-6 text-slate-600 text-sm leading-relaxed">
+        Inicia sesión y descubre arreglos florales encantadores, ofertas exclusivas y un servicio que florece con amor.
+      </p>
+      <p class="mt-12 text-sm text-slate-700">
+        ¿Aún no tienes cuenta?
+        <a routerLink="/registro" class="text-pink-600 font-semibold hover:underline ml-1">Regístrate aquí</a>
+      </p>
+    </div>
+
+    <!-- Formulario -->
+    <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" class="max-w-md md:ml-auto w-full">
+      <h3 class="text-slate-900 lg:text-3xl text-2xl font-bold mb-8">Iniciar sesión</h3>
+
+      <div class="space-y-6">
+        <!-- Correo -->
+        <div>
+          <label class='text-sm text-slate-800 font-medium mb-2 block'>Correo electrónico</label>
+          <input formControlName="correo" type="email" required
+            class="bg-slate-100 w-full text-sm text-slate-800 px-4 py-3 rounded-md border border-gray-200 focus:border-pink-600 focus:bg-transparent"
+            placeholder="Ingresa tu correo" />
+          <p *ngIf="correo?.touched && correo?.errors?.['required']" class="text-red-500 text-sm mt-1">
+            El correo es obligatorio.
+          </p>
+          <p *ngIf="correo?.touched && correo?.errors?.['email']" class="text-red-500 text-sm mt-1">
+            Ingresa un correo válido.
+          </p>
+        </div>
+
+        <!-- Contraseña -->
+        <div>
+          <label class='text-sm text-slate-800 font-medium mb-2 block'>Contraseña</label>
+          <input formControlName="contrasena" type="password" required
+            class="bg-slate-100 w-full text-sm text-slate-800 px-4 py-3 rounded-md border border-gray-200 focus:border-pink-600 focus:bg-transparent"
+            placeholder="Ingresa tu contraseña" />
+          <p *ngIf="contrasena?.touched && contrasena?.errors?.['required']" class="text-red-500 text-sm mt-1">
+            La contraseña es obligatoria.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox"
+              class="h-4 w-4 text-pink-600 border-slate-300 rounded" />
+            <label for="remember-me" class="ml-3 block text-sm text-slate-500">Recuérdame</label>
+          </div>
+          <div class="text-sm">
+            <a href="javascript:void(0);" class="text-pink-600 hover:text-pink-500 font-medium">
+              ¿Olvidaste tu contraseña?
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <button type="submit" [disabled]="loginForm.invalid"
+          class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-pink-600 hover:bg-pink-700 focus:outline-none cursor-pointer">
+          Iniciar sesión
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
