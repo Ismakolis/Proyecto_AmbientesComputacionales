@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component ,OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SidebarService } from '../../../services/sidebar';
 import { CommonModule } from '@angular/common';
+import { LogoutService } from '../../../services/logout.service';
 import { Router } from '@angular/router';
-import { CategoriaService, Categoria } from '../../../services/categoria.service';
+import {CategoriaService, Categoria} from '../../../services/categoria.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,14 +12,16 @@ import { CategoriaService, Categoria } from '../../../services/categoria.service
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit{
   rol: string = 'cliente';
   categorias: Categoria[] = [];
-
+  
 
   ngOnInit() {
     const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
     this.rol = usuario?.rol || 'cliente';
+
+
 
     this.categoriaService.obtenerCategorias().subscribe({
       next: (data) => {
@@ -29,13 +32,13 @@ export class SidebarComponent implements OnInit {
       }
     });
 
-
   }
 
   isVisible = false;
 
   constructor(
     private sidebarService: SidebarService,
+    private logoutService: LogoutService,
     private router: Router,
     private categoriaService: CategoriaService
   ) {
@@ -51,7 +54,16 @@ export class SidebarComponent implements OnInit {
   }
 
   cerrarSesion() {
-    ;
+    this.logoutService.logout().subscribe({
+      next: (res) => {
+        console.log(res.mensaje);
+        localStorage.removeItem('usuario');  
+        this.router.navigate(['']);  
+      },
+      error: (err) => {
+        console.error('Error al cerrar sesión', err);
+      }
+    });
   }
-
+  
 }

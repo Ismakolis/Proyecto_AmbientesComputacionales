@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 //import { CarritoService } from '../../services/carrito.service';
 import { ToastrService } from 'ngx-toastr';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-productos-por-categoria',
@@ -19,7 +20,8 @@ export class ProductosPorCategoriaComponent {
     private route: ActivatedRoute,
     private productoService: ProductoService,
     //private carritoService: CarritoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class ProductosPorCategoriaComponent {
         this.productoService.obtenerPorCategoria(id).subscribe(data => {
           console.log('Productos recibidos:', data);
           this.productos = data;
+          this.cdr.detectChanges(); 
         });
       }
     });
