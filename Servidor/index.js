@@ -24,6 +24,8 @@ app.use(cookieParser());
 
 // Rutas
 app.use('/api/loginUser', require('./routes/usuarioLogin'));
+app.use('/api/misProductos', require('./routes/misProductos'));
+app.use('/api/productos', require('./routes/productos'));
 
 
 
