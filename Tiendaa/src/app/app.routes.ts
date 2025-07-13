@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminGuard } from './guard/adminGuard';
 
 export const routes: Routes = [
 
@@ -32,7 +33,23 @@ export const routes: Routes = [
         path: 'products',
         loadComponent: () =>
           import('./Bunisess/products/products.component').then((m) => m.ProductsComponent),
-      }
+      },
+      {
+        path: 'agregarProducto',
+        loadComponent: () =>
+          import('./Bunisess/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
+      },
+      {
+        path: 'agregarProducto/:id',
+        loadComponent: () =>
+          import('./Bunisess/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
+      },
+      {
+        path: 'misProductos',
+        loadComponent: () =>
+          import('./Bunisess/mis-productos/mis-productos.component').then((m) => m.MisProductosComponent),
+        canActivate: [AdminGuard]
+      },
 
 
 
