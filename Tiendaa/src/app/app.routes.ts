@@ -50,7 +50,17 @@ export const routes: Routes = [
           import('./Bunisess/mis-productos/mis-productos.component').then((m) => m.MisProductosComponent),
         canActivate: [AdminGuard]
       },
+      {
+        path: 'categorias',
+        loadComponent: () =>
+          import('./Bunisess/categoria/categoria.component').then((m) => m.CategoriaComponent)
+      },
+      {
+        path: 'categorias/:id',
+        loadComponent: () =>
+          import('./Bunisess/productos-por-categoria/productos-por-categoria.component').then((m) => m.ProductosPorCategoriaComponent)
 
+      }
 
 
     ],
