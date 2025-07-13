@@ -9,6 +9,11 @@ export const routes: Routes = [
       import('./Bunisess/login/login.component').then((m) => m.LoginComponent),
   },
   {
+    path: 'registro',
+    loadComponent: () =>
+      import('./Bunisess/registro/registro.component').then((m) => m.RegistroComponent),
+  },
+  {
     path: 'inicio',
     loadComponent: () =>
       import('./inicio/inicio/dashboard.component').then((m) => m.DashboardComponent),
@@ -33,6 +38,11 @@ export const routes: Routes = [
         path: 'products',
         loadComponent: () =>
           import('./Bunisess/products/products.component').then((m) => m.ProductsComponent),
+      },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./Bunisess/profile/profile.component').then((m) => m.ProfileComponent),
       },
       {
         path: 'agregarProducto',
