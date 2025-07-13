@@ -1,0 +1,83 @@
+<div class="mt-6 flex justify-end">
+  <button [routerLink]="['/app/agregarProducto']"
+    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-8 rounded-md shadow-md transition-colors duration-300">
+    Agregar Nuevo Producto
+  </button>
+</div>
+
+<div class="overflow-x-auto rounded-lg shadow-md bg-white mt-6">
+  <table class="min-w-full border-collapse border border-gray-300 rounded-lg">
+    <thead class="bg-gray-100 text-gray-700 text-sm font-semibold select-none">
+      <tr>
+        <th class="py-3 px-6 text-left">Imagen</th>
+        <th class="py-3 px-6 text-left">Nombre</th>
+        <th class="py-3 px-6 text-left">Descripción</th>
+        <th class="py-3 px-6 text-left">Precio</th>
+        <th class="py-3 px-6 text-left">Stock</th>
+        <th class="py-3 px-6 text-left">Categoria</th>
+        <th class="py-3 px-6 text-left">Oferta</th>
+        <th class="py-3 px-6 text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productosPaginados"
+        class="bg-white border-b border-gray-200 hover:shadow-md hover:bg-gray-50 transition-shadow duration-300 cursor-pointer">
+        <td class="py-3 px-6">
+          <img *ngIf="producto.imagen" [src]="'http://localhost:4000/api/misProductos/get-imagen/' + producto.imagen"
+            alt="Imagen"
+            class="w-16 h-16 object-cover rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300" />
+        </td>
+        <td class="py-3 px-6 text-gray-900 font-semibold">{{ producto.nombre }}</td>
+        <td class="py-3 px-6 text-gray-600 text-sm">{{ producto.descripcion }}</td>
+        <td class="py-3 px-6 text-gray-900 font-semibold">${{ producto.precio.toFixed(2) }}</td>
+        <td class="py-3 px-6 text-gray-700">{{ producto.stock }}</td>
+        <td class="py-3 px-6 text-gray-700"></td>
+
+        <td class="py-3 px-6 text-sm" [ngClass]="producto.oferta > 0 ? 'text-red-600 font-bold' : 'text-gray-400'">
+          <span *ngIf="producto.oferta > 0">{{ producto.oferta }}%</span>
+          <span *ngIf="producto.oferta === 0">-</span>
+        </td>
+        <td class="py-3 px-6 flex items-center justify-center space-x-4">
+          <button [routerLink]="['/app/agregarProducto', producto._id]"
+            class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-1 px-4 rounded-md text-sm shadow-sm transition-colors duration-200">
+            Editar
+          </button>
+          <button (click)="eliminarProducto(producto._id)"
+            class="bg-red-600 hover:bg-red-700 text-white font-semibold py-1 px-4 rounded-md text-sm shadow-sm transition-colors duration-200">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h5 *ngIf="listProductos.length === 0" class="text-center mt-8 text-gray-500 font-medium text-lg">
+  No hay productos para mostrar.
+</h5>
+
+<!-- Barra de paginación -->
+<div class="flex justify-center space-x-2 mt-4" *ngIf="totalPages > 1">
+  <button
+    class="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-200"
+    [disabled]="currentPage === 1"
+    (click)="goToPage(currentPage - 1)">
+    &lt; Anterior
+  </button>
+
+  <button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="goToPage(i + 1)"
+    [class.bg-indigo-600]="currentPage === i + 1"
+    [class.text-white]="currentPage === i + 1"
+    class="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-200 cursor-pointer">
+    {{ i + 1 }}
+  </button>
+
+  <button
+    class="px-3 py-1 rounded-md border border-gray-300 hover:bg-gray-200"
+    [disabled]="currentPage === totalPages"
+    (click)="goToPage(currentPage + 1)">
+    Siguiente &gt;
+  </button>
+</div>
