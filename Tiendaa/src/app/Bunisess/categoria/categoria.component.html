@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Categorías de Productos</h2>
+
+  <form (submit)="crearCategoria(nombreInput.value, descripcionInput.value); $event.preventDefault()">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        #nombreInput
+        required
+        minlength="3"
+        maxlength="20"
+        (input)="validarNombre(nombreInput.value)"
+        class="border p-1"
+      />
+      <div class="text-red-600" *ngIf="nombreError">
+        {{ nombreError }}
+      </div>
+    </div>
+
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <input
+        type="text"
+        id="descripcion"
+        #descripcionInput
+        (input)="validarDescripcion(descripcionInput.value)"
+        class="border p-1"
+      />
+      <div class="text-red-600" *ngIf="descripcionError">
+        {{ descripcionError }}
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="nombreError || !nombreInput.value">Agregar Categoría</button>
+  </form>
+
+  <hr />
+
+  <ul>
+    <li *ngFor="let categoria of categorias">
+      <strong>{{ categoria.nombre }}</strong> - {{ categoria.descripcion }}
+    </li>
+  </ul>
+</div>

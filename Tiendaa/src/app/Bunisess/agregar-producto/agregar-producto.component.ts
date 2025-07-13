@@ -5,7 +5,7 @@ import { Producto } from '../../models/productos';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MisProductosService } from '../../services/misProductos';
-//import { CategoriaService,Categoria } from '../../services/categoria.service';
+import { CategoriaService,Categoria } from '../../services/categoria.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { MisProductosService } from '../../services/misProductos';
   styleUrl: './agregar-producto.component.css'
 })
 export class AgregarProductoComponent {
- //categorias: Categoria[] = [];
+ categorias: Categoria[] = [];
   //control para visualizar la imagen
   selectedFileName: string | null = null;
   imagePreview: string | null = null;
@@ -52,7 +52,7 @@ export class AgregarProductoComponent {
     private toastr: ToastrService,
     private _productoService: MisProductosService,
     private aRouter: ActivatedRoute,
-   // private categoriaService: CategoriaService
+   private categoriaService: CategoriaService
   ) {
     this.productoForm = this.fb.group({
       producto: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
@@ -69,7 +69,7 @@ export class AgregarProductoComponent {
 
   ngOnInit(): void {
     this.esEditar();
-   // this.obtenerCategorias();
+   this.obtenerCategorias();
   }
 
  
@@ -149,11 +149,11 @@ agregarProducto() {
   }
 }
 
-//obtenerCategorias(): void {
- // this.categoriaService.obtenerCategorias().subscribe(data => {
- //   this.categorias = data;
- // });
-//}
+obtenerCategorias(): void {
+  this.categoriaService.obtenerCategorias().subscribe(data => {
+   this.categorias = data;
+ });
+}
 
 
 

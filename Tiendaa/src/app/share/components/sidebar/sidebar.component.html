@@ -68,9 +68,9 @@
               </svg>
             </div>
             <ul *ngIf="mostrarCategorias" class="pl-8 mt-2 space-y-1 text-red-800">
-              <li >
-                <a [routerLink]="['/app/categorias']" class="block px-2 py-1 rounded hover:bg-red-200">
-                 
+              <li *ngFor="let categoria of categorias">
+                <a [routerLink]="['/app/categorias', categoria._id]" class="block px-2 py-1 rounded hover:bg-red-200">
+                  {{ categoria.nombre }}
                 </a>                         
               </li>
             </ul>

@@ -31,7 +31,7 @@
         <td class="py-3 px-6 text-gray-600 text-sm">{{ producto.descripcion }}</td>
         <td class="py-3 px-6 text-gray-900 font-semibold">${{ producto.precio.toFixed(2) }}</td>
         <td class="py-3 px-6 text-gray-700">{{ producto.stock }}</td>
-        <td class="py-3 px-6 text-gray-700"></td>
+        <td class="py-3 px-6 text-gray-700">{{ producto.categoria.nombre }}</td>
 
         <td class="py-3 px-6 text-sm" [ngClass]="producto.oferta > 0 ? 'text-red-600 font-bold' : 'text-gray-400'">
           <span *ngIf="producto.oferta > 0">{{ producto.oferta }}%</span>
