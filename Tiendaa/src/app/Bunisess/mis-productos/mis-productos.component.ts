@@ -5,6 +5,8 @@ import { MisProductosService } from '../../services/misProductos';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriaService,Categoria } from '../../services/categoria.service';
+//No borrar estas lienas
+import { ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -26,7 +28,8 @@ export class MisProductosComponent {
   constructor(
     private _productoService: MisProductosService,
     private toastr: ToastrService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +44,8 @@ export class MisProductosComponent {
     this._productoService.getProductos().subscribe(
       data => {
         this.listProductos = data;
-  
+        //No borrar esta liena
+        this.cdr.detectChanges(); 
       
   
         this.setPagination();
