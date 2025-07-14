@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+//No borrar esta liena
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-carrito',
@@ -18,8 +20,10 @@ export class CarritoComponent implements OnInit, OnDestroy {
   private carritoSub!: Subscription;
 
   constructor(private carritoService: CarritoService,
-    private router: Router
-  ) {}
+    private router: Router,
+    //No borrar esta liena
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.cargarCarrito();
@@ -27,6 +31,7 @@ export class CarritoComponent implements OnInit, OnDestroy {
     // Suscribirse para recargar carrito automáticamente cuando haya cambios
     this.carritoSub = this.carritoService.carritoActualizado.subscribe(() => {
       this.cargarCarrito();
+
     });
   }
 
@@ -40,6 +45,7 @@ export class CarritoComponent implements OnInit, OnDestroy {
       next: (data) => {
         this.items = data || [];
         this.cargando = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.items = [];
@@ -88,19 +94,19 @@ export class CarritoComponent implements OnInit, OnDestroy {
 
   checkout() {
     console.log('checkout disparado');
-  
+
     const productos = this.items.map(item => ({
       nombre: item.producto?.nombre || 'Nombre no disponible',
       precio: item.producto?.precio || 0,
       cantidad: item.cantidad || 0
     }));
-  
 
-    
-  // Guardar productos en localStorage
-  localStorage.setItem('pedidoTemporal', JSON.stringify(productos));
 
-  // Redirigir a la página de confirmación
-  this.router.navigate(['app/confirmacion-pago']);
+
+    // Guardar productos en localStorage
+    localStorage.setItem('pedidoTemporal', JSON.stringify(productos));
+
+    // Redirigir a la página de confirmación
+    this.router.navigate(['app/confirmacion-pago']);
   }
 }
