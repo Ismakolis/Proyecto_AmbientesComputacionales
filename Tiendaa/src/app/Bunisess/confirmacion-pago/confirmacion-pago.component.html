@@ -1,0 +1,17 @@
+<h2>Resumen del Pedido</h2>
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Precio</th>
+    <th>Cantidad</th>
+    <th>Total</th>
+  </tr>
+  <tr *ngFor="let p of productos">
+    <td>{{ p.nombre }}</td>
+    <td>{{ p.precio }}</td>
+    <td>{{ p.cantidad }}</td>
+    <td>{{ p.precio * p.cantidad }}</td>
+  </tr>
+</table>
+<h3>Total a pagar : {{ getTotal() }}</h3>
+<button (click)="confirmarPago()">Realizar pago</button>
