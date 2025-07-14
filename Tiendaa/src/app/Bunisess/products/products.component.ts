@@ -5,6 +5,8 @@ import { Producto } from '../../models/productos';
 import { CarritoService } from '../../services/carrito.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService, Usuario } from '../../services/auth.service';
+//No borrar estas lienas
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-products',
@@ -21,6 +23,7 @@ export class ProductsComponent {
     private _productoService: ProductoService,
     private carritoService: CarritoService,
     private toastr: ToastrService,
+    private cdr: ChangeDetectorRef
     
   ) {}
 
@@ -32,6 +35,8 @@ export class ProductsComponent {
     this._productoService.getProductos().subscribe(
       data => {
         this.listProductos = data;
+        //No borrar esta liena
+        this.cdr.detectChanges(); 
       },
       error => {
         console.error('Error al obtener productos:', error);
