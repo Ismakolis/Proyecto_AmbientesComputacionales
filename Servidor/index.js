@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use('/api/loginUser', require('./routes/usuarioLogin'));
 app.use('/api/misProductos', require('./routes/misProductos'));
 app.use('/api/productos', require('./routes/productos'));
+app.use('/api/carrito', require('./routes/carrito'));
 app.use('/api/categorias',require('./routes/categoriaRoutes'));
 app.use('/api/registroUser', require('./routes/usuarioRegistro'));
 //api para cerrar la secion
