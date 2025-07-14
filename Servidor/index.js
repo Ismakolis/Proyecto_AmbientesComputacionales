@@ -39,7 +39,7 @@ app.use('/api', require('./routes/usuarioRoutes'));
 app.get('/api/usuarioSesion', verificarToken, require('./routes/usuarioRoutes'));
 
 
-
+app.use('/api', require('./routes/pago'));
 
 
 // Iniciar servidor

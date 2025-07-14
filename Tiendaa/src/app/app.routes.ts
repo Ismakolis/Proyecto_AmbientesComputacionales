@@ -70,6 +70,16 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./Bunisess/categoria/categoria.component').then((m) => m.CategoriaComponent)
       },
+       {
+        path: 'confirmacion-pago',
+        loadComponent: () => import('./Bunisess/confirmacion-pago/confirmacion-pago.component').then(m => m.ConfirmacionPagoComponent)
+    },
+     {
+        path: 'gracias',
+        loadComponent: () => import('./Bunisess/gracias/gracias.component').then(m => m.GraciasComponent)
+    },
+
+
       {
         path: 'categorias/:id',
         loadComponent: () =>
