@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MisProductosService } from '../../services/misProductos';
 import { CategoriaService,Categoria } from '../../services/categoria.service';
-
+//No borrar estas lienas
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -52,7 +53,8 @@ export class AgregarProductoComponent {
     private toastr: ToastrService,
     private _productoService: MisProductosService,
     private aRouter: ActivatedRoute,
-   private categoriaService: CategoriaService
+   private categoriaService: CategoriaService,
+   private cdr: ChangeDetectorRef
   ) {
     this.productoForm = this.fb.group({
       producto: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
@@ -70,6 +72,8 @@ export class AgregarProductoComponent {
   ngOnInit(): void {
     this.esEditar();
    this.obtenerCategorias();
+    //No borrar esta liena
+    this.cdr.detectChanges(); 
   }
 
  
@@ -152,6 +156,7 @@ agregarProducto() {
 obtenerCategorias(): void {
   this.categoriaService.obtenerCategorias().subscribe(data => {
    this.categorias = data;
+    
  });
 }
 

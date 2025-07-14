@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { ProductoService, Producto } from '../../services/producto.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-//import { CarritoService } from '../../services/carrito.service';
+import { CarritoService } from '../../services/carrito.service';
 import { ToastrService } from 'ngx-toastr';
+//No borrar esta liena
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
@@ -19,8 +20,9 @@ export class ProductosPorCategoriaComponent {
   constructor(
     private route: ActivatedRoute,
     private productoService: ProductoService,
-    //private carritoService: CarritoService,
+    private carritoService: CarritoService,
     private toastr: ToastrService,
+    //No borrar esta liena
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -43,16 +45,16 @@ export class ProductosPorCategoriaComponent {
     const productoId = producto._id;
     this.cargandoAgregar[productoId] = true;
 
-    //this.carritoService.agregarItem(productoId, 1).subscribe({
-      //next: () => {
-        //this.toastr.success('Producto agregado al carrito', 'Éxito');
-        //this.cargandoAgregar[productoId] = false;
-      //},
-      //error: (err) => {
-        //console.error('Error al agregar al carrito:', err);
-        //this.toastr.error('No se pudo agregar al carrito', 'Error');
-        //this.cargandoAgregar[productoId] = false;
-      //}
-    //});
+    this.carritoService.agregarItem(productoId, 1).subscribe({
+      next: () => {
+        this.toastr.success('Producto agregado al carrito', 'Éxito');
+        this.cargandoAgregar[productoId] = false;
+      },
+      error: (err) => {
+        console.error('Error al agregar al carrito:', err);
+        this.toastr.error('No se pudo agregar al carrito', 'Error');
+        this.cargandoAgregar[productoId] = false;
+      }
+    });
   }
 }
