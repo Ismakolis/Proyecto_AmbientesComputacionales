@@ -5,7 +5,7 @@ import { MisProductosService } from '../../services/misProductos';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriaService,Categoria } from '../../services/categoria.service';
-import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-mis-productos',
@@ -26,13 +26,12 @@ export class MisProductosComponent {
   constructor(
     private _productoService: MisProductosService,
     private toastr: ToastrService,
-    private categoriaService: CategoriaService,
-    private cdr: ChangeDetectorRef
+    private categoriaService: CategoriaService
   ) {}
 
   ngOnInit(): void {
 
-   this.obtenerCategorias();
+    this.obtenerCategorias();
 
   this.obtenerProductos();
    
@@ -42,7 +41,7 @@ export class MisProductosComponent {
     this._productoService.getProductos().subscribe(
       data => {
         this.listProductos = data;
-        this.cdr.detectChanges(); 
+  
       
   
         this.setPagination();
@@ -85,9 +84,8 @@ export class MisProductosComponent {
   }
 
   obtenerCategorias(): void {
-   this.categoriaService.obtenerCategorias().subscribe(data => {
-     this.categorias = data;
-     this.cdr.detectChanges(); 
+    this.categoriaService.obtenerCategorias().subscribe(data => {
+      this.categorias = data;
     });
   }
   
