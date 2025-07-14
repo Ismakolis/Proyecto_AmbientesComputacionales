@@ -45,6 +45,11 @@ export const routes: Routes = [
           import('./Bunisess/profile/profile.component').then((m) => m.ProfileComponent),
       },
       {
+        path: 'carrito',
+        loadComponent: () =>
+          import('./Bunisess/carrito/carrito.component').then((m) => m.CarritoComponent),
+      },
+      {
         path: 'agregarProducto',
         loadComponent: () =>
           import('./Bunisess/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),

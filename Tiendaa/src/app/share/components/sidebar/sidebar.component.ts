@@ -1,27 +1,44 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SidebarService } from '../../../services/sidebar';
 import { CommonModule } from '@angular/common';
+import { SidebarService } from '../../../services/sidebar';
 import { LogoutService } from '../../../services/logout.service';
 import { Router } from '@angular/router';
-import {CategoriaService, Categoria} from '../../../services/categoria.service';
+import { CategoriaService, Categoria } from '../../../services/categoria.service';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
+  standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent implements OnInit {
   rol: string = 'cliente';
   categorias: Categoria[] = [];
-  
+  isVisible = false;
+  mostrarCategorias: boolean = false;
+
+  constructor(
+    private sidebarService: SidebarService,
+    private logoutService: LogoutService,
+    private router: Router,
+    private categoriaService: CategoriaService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.sidebarService.sidebarVisible$.subscribe((visible) => {
+      this.isVisible = visible;
+    });
+  }
 
   ngOnInit() {
-    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
-    this.rol = usuario?.rol || 'cliente';
-
-
+    // Solo ejecutar si estamos en el navegador
+    if (isPlatformBrowser(this.platformId)) {
+      const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+      this.rol = usuario?.rol || 'cliente';
+    }
 
     this.categoriaService.obtenerCategorias().subscribe({
       next: (data) => {
@@ -31,39 +48,25 @@ export class SidebarComponent implements OnInit{
         console.error('Error al obtener categorías', err);
       }
     });
-
   }
-
-  isVisible = false;
-
-  constructor(
-    private sidebarService: SidebarService,
-    private logoutService: LogoutService,
-    private router: Router,
-    private categoriaService: CategoriaService
-  ) {
-    this.sidebarService.sidebarVisible$.subscribe((visible) => {
-      this.isVisible = visible;
-    });
-  }
-
-  mostrarCategorias: boolean = false;
 
   toggleCategorias(): void {
     this.mostrarCategorias = !this.mostrarCategorias;
   }
 
   cerrarSesion() {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('usuario');
+    }
+
     this.logoutService.logout().subscribe({
       next: (res) => {
         console.log(res.mensaje);
-        localStorage.removeItem('usuario');  
-        this.router.navigate(['']);  
+        this.router.navigate(['']);
       },
       error: (err) => {
         console.error('Error al cerrar sesión', err);
       }
     });
   }
-  
 }
