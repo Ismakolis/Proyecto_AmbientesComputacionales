@@ -75,7 +75,32 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./Bunisess/productos-por-categoria/productos-por-categoria.component').then((m) => m.ProductosPorCategoriaComponent)
 
+      },
+      {
+        path: 'confirmacion-pago',
+        loadComponent: () => import('./Bunisess/confirmacion-pago/confirmacion-pago.component').then(m => m.ConfirmacionPagoComponent)
+      },
+      {
+        path: 'clientes',
+        loadComponent: () => import('./Bunisess/cliente-listar/cliente-listar').then(m => m.ClienteListar)
+      },
+      {
+        path: 'clientes/:id',
+        loadComponent: () =>
+          import('./Bunisess/cliente-formulario/cliente-formulario').then((m) => m.ClienteFormulario)
+
+      },
+      {
+        path: 'clientes/nuevo',
+        loadComponent: () =>
+          import('./Bunisess/cliente-formulario/cliente-formulario').then((m) => m.ClienteFormulario)
+
+      },
+      {
+        path: 'gracias',
+        loadComponent: () => import('./Bunisess/gracias/gracias.component').then(m => m.GraciasComponent)
       }
+
 
 
     ],

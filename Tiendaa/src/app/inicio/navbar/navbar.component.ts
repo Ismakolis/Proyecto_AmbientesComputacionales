@@ -1,13 +1,27 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [ CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
- 
+  cargando = false;
+  mensajeCarga = '';
+
+  constructor(private router: Router) {}
+
+  navegarConCarga(ruta: string, mensaje: string = 'Cargando...') {
+    this.cargando = true;
+    this.mensajeCarga = mensaje;
+
+    setTimeout(() => {
+      this.cargando = false;
+      this.router.navigate([ruta]);
+    }, 1500);
+  }
 }
