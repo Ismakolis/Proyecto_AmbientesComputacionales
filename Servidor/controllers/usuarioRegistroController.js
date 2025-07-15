@@ -33,3 +33,32 @@ exports.crearUsuario = async (req, res) => {
         res.status(500).json({ mensaje: 'Hubo un error en el servidor' });
     }
 };
+// Obtener un usuario por su ID
+exports.obtenerUsuarioPorId = async (req, res) => {
+    try {
+      const usuario = await UsuarioLogin.findById(req.params.id).select('-contrasena');
+      if (!usuario) {
+        return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+      }
+      res.json(usuario);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensaje: 'Error al obtener el usuario' });
+    }
+  };
+  exports.actualizarUsuario = async (req, res) => {
+    const { id } = req.params;
+    const datosActualizados = req.body;
+  
+    try {
+      const usuarioActualizado = await UsuarioLogin.findByIdAndUpdate(id, datosActualizados, { new: true });
+      if (!usuarioActualizado) {
+        return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+      }
+      res.json(usuarioActualizado);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ mensaje: 'Error al actualizar el usuario' });
+    }
+  };
+  

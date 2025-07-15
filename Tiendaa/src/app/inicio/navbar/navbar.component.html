@@ -1,32 +1,42 @@
-<header class="relative w-full h-screen bg-cover bg-center bg-fixed" style="background-image: url('https://img.freepik.com/fotos-premium/ramo-rosas-vista-superior-fondo-madera-marron_93675-99067.jpg');">
+<header class="relative w-full h-screen bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1350&q=80');">
 
   <nav id="navbar" class="fixed top-0 left-0 w-full z-20 transition-all duration-300">
     <div class="flex justify-between items-center h-22 bg-white bg-opacity-70 backdrop-blur-md shadow-md rounded-b-lg px-4">
       <a href="#inicio" class="flex items-center space-x-2">
-        <img src="https://img.favpng.com/21/7/2/ecoflor-png-favpng-Q7uJNrwkPDZK0XAvD9mFcadXE.jpg" class="h-8 w-8" alt="Flor Logo">
-        <span class="text-lg font-semibold text-gray-800 tracking-wide">EcoFlor Arte</span>
+        <img src="https://cdn-icons-png.flaticon.com/512/3063/3063829.png" class="h-8 w-8" alt="Logo Computadores">
+        <span class="text-lg font-semibold text-gray-800 tracking-wide">TechStore</span>
       </a>
       <div class="hidden md:flex space-x-6">
         <a href="#inicio" class="text-lg font-medium text-indigo-600 hover:text-indigo-800 tracking-wide">Inicio</a>
         <a href="#nosotros" class="text-lg text-gray-700 hover:text-indigo-600 tracking-wide">Nosotros</a>
-        <a href="#servicios" class="text-lg text-gray-700 hover:text-indigo-600 tracking-wide">Servicios</a>
+        <a href="#productos" class="text-lg text-gray-700 hover:text-indigo-600 tracking-wide">Productos</a>
         <a href="#contacto" class="text-lg text-gray-700 hover:text-indigo-600 tracking-wide">Contacto</a>
       </div>
-      <a routerLink="/app/products"
-        class="hidden md:inline-block text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md text-lg font-medium tracking-wide">
+      <button
+        (click)="navegarConCarga('/app/products', 'Cargando la tienda...')"
+        class="hidden md:inline-block text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md text-lg font-medium tracking-wide"
+      >
         <i class="bi bi-shop text-xl"></i> Tienda
-      </a>
+      </button>
     </div>
   </nav>
 
   <div class="flex items-center justify-center h-full text-center text-white px-4">
     <div>
       <h1 class="text-4xl md:text-5xl font-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
-        Bienvenido a Florería
+        Encuentra tu próximo computador
       </h1>
       <p class="text-lg md:text-xl" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.7);">
-        Flores frescas y momentos especiales
+        Las mejores marcas y tecnología al alcance de un clic
       </p>
+    </div>
+  </div>
+
+  <!-- Spinner de carga -->
+  <div *ngIf="cargando" class="fixed inset-0 z-50 bg-white bg-opacity-90 flex items-center justify-center">
+    <div class="text-center">
+      <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto"></div>
+      <p class="mt-4 text-lg font-semibold text-indigo-700">{{ mensajeCarga }}</p>
     </div>
   </div>
 </header>

@@ -14,40 +14,41 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent {
   categorias = [
     {
-      icono: 'https://cdn-icons-png.flaticon.com/512/3631/3631574.png',
-      titulo: 'Cumpleaños',
-      color: 'text-pink-600',
-      descripcion: 'Sorprende en su día especial con un arreglo lleno de alegría y color.'
+      icono: 'https://cdn-icons-png.flaticon.com/512/992/992700.png', // Laptop icon
+      titulo: 'Laptops',
+      color: 'text-indigo-600',
+      descripcion: 'Encuentra laptops potentes y portátiles para trabajo, estudio y gaming.'
     },
     {
-      icono: 'https://www.tierradefloresquito.com/wp-content/uploads/2014/12/REDONDO-VARIADO-ELEGANTE-3-600x600.png',
-      titulo: 'Aniversario',
-      color: 'text-red-600',
-      descripcion: 'Celebra años de amor con flores elegantes y memorables.'
-    },
-    {
-      icono: 'https://cdn-icons-png.flaticon.com/512/3190/3190613.png',
-      titulo: 'Día de la Madre',
-      color: 'text-rose-500',
-      descripcion: 'Un detalle floral para la persona que te dio la vida.'
-    },
-    {
-      icono: 'https://cdn-icons-png.flaticon.com/512/1533/1533712.png',
-      titulo: 'Día del Padre',
+      icono: 'https://cdn-icons-png.flaticon.com/512/1159/1159633.png', // Desktop icon
+      titulo: 'Computadoras de Escritorio',
       color: 'text-blue-600',
-      descripcion: 'Flores que reflejan fuerza y cariño para papá.'
+      descripcion: 'Equipos de escritorio con alto rendimiento para todas tus necesidades.'
     },
     {
-      icono: 'https://cdn-icons-png.flaticon.com/512/1077/1077035.png',
-      titulo: 'San Valentín',
-      color: 'text-fuchsia-700',
-      descripcion: 'Expresa tu amor con un ramo que hable por ti.'
+      icono: 'https://cdn-icons-png.flaticon.com/512/1090/1090632.png', // Gaming icon
+      titulo: 'Gaming',
+      color: 'text-red-600',
+      descripcion: 'Hardware y accesorios para una experiencia de juego inmersiva.'
     },
     {
-      icono: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG4OgtzEU9Mp96asgB0vAp3hTNjRhMeS45ww&s',
-      titulo: 'Graduación',
-      color: 'text-emerald-600',
-      descripcion: 'Celebra logros importantes con flores llenas de orgullo.'
+      icono: 'https://cdn-icons-png.flaticon.com/512/1827/1827933.png', // Monitor icon
+      titulo: 'Monitores',
+      color: 'text-green-600',
+      descripcion: 'Pantallas de alta resolución y velocidad para productividad y gaming.'
+    },
+    {
+      icono: 'https://cdn-icons-png.flaticon.com/512/565/565547.png', // Keyboard icon
+      titulo: 'Periféricos',
+      color: 'text-yellow-600',
+      descripcion: 'Teclados, ratones, audífonos y más para complementar tu setup.'
+    },
+    {
+      icono: 'https://cdn-icons-png.flaticon.com/512/3221/3221812.png', // Software icon
+      titulo: 'Software',
+      color: 'text-purple-600',
+      descripcion: 'Programas y herramientas para optimizar tu productividad y creatividad.'
     }
   ];
+  
 }

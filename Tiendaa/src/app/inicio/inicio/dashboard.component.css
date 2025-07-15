@@ -1,8 +1,8 @@
 /* Fondo general con degradado suave y textura ligera */
 .background {
-  background: linear-gradient(135deg, #f9f7f6, #e4d8d4);
+  background: linear-gradient(135deg, #e8f0fe, #c7d9fc);
   padding: 5rem 2rem;
-  color: #4a3c3c;
+  color: #2c3e70;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -10,7 +10,7 @@
 .titulo {
   font-size: 3.8rem;
   font-weight: 900;
-  color: #b33a3a;
+  color: #1e3a8a; /* Azul oscuro */
   margin: 1rem 0 1.5rem;
   text-align: center;
   letter-spacing: 0.05em;
@@ -21,7 +21,7 @@
 /* Subtítulos suaves y legibles */
 .subtitulo {
   font-size: 1.3rem;
-  color: #6b5151;
+  color: #4563b9;
   max-width: 700px;
   margin: 0 auto 3rem auto;
   text-align: center;
@@ -45,13 +45,13 @@
 
 /* Secciones claras con sombra sutil y bordes redondeados */
 .seccion-clara {
-  background-color: #fff9f7;
+  background-color: #f4f8ff; /* Blanco azulado muy suave */
   border-radius: 1.25rem;
   padding: 3rem 2.5rem;
   margin: 5rem auto;
   max-width: 1100px;
-  box-shadow: 0 12px 24px rgba(180, 140, 140, 0.15);
-  color: #5a4545;
+  box-shadow: 0 12px 24px rgba(66, 103, 178, 0.15);
+  color: #2c3e70;
   font-size: 1.1rem;
   line-height: 1.65;
 }
@@ -61,7 +61,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #a53636;
+  color: #1e40af;
   font-family: 'Playfair Display', serif;
   text-align: center;
 }
@@ -82,10 +82,10 @@
 
 /* Cada valor estilizado como tarjeta */
 .valor-item {
-  background: #fdf6f6;
+  background: #e6f0ff; /* azul muy suave */
   padding: 2rem 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(180, 140, 140, 0.12);
+  box-shadow: 0 8px 20px rgba(66, 103, 178, 0.12);
   transition: transform 0.3s ease;
 }
 
@@ -98,7 +98,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #7a3a3a;
+  color: #274690;
 }
 
 /* Texto central para párrafos */
@@ -106,7 +106,7 @@
   font-size: 1.15rem;
   max-width: 700px;
   margin: 0 auto 3rem;
-  color: #5a4545;
+  color: #2c3e70;
   line-height: 1.7;
 }
 
@@ -114,35 +114,43 @@
 .boton {
   display: inline-block;
   margin-top: 2.5rem;
-  background-color: #a53535;
+  background-color: #3b82f6; /* Azul vibrante */
   color: white;
   padding: 0.9rem 2.5rem;
   border-radius: 50px;
   font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
-  box-shadow: 0 6px 12px rgba(165, 53, 53, 0.5);
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.5);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .boton:hover {
-  background-color: #872d2d;
-  box-shadow: 0 8px 16px rgba(135, 45, 45, 0.7);
+  background-color: #2563eb; /* Azul más oscuro */
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.7);
   cursor: pointer;
 }
 
-/* Botón CTA final con mayor énfasis */
+/* Botón CTA final más suave y elegante */
 .boton-cta {
-  background: linear-gradient(90deg, #b33a3a, #7f1c1c);
-  box-shadow: 0 8px 20px rgba(179, 58, 58, 0.8);
+  background: white;
+  color: #2563eb; /* azul vibrante */
+  border: 2px solid #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   font-size: 1.2rem;
   padding: 1rem 3rem;
   text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 50px;
 }
 
 .boton-cta:hover {
-  background: linear-gradient(90deg, #7f1c1c, #b33a3a);
+  background: #1a5ae2;
+  color: white;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
+  cursor: pointer;
 }
+
 
 /* Animaciones mejoradas con easing suave */
 @keyframes fadeIn {

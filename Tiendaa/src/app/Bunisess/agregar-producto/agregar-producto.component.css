@@ -1,12 +1,12 @@
 /* Estilos para el formulario */
 form {
-  padding: 2rem;          /* Espacio interno amplio */
-  margin: 2rem auto;      /* Margen arriba y abajo para separar del resto, centrado horizontalmente */
-  max-width: 48rem;       /* Limita el ancho máximo */
-  background-color: white;
+  padding: 2rem;                 /* Espacio interno amplio */
+  margin: 2rem auto;             /* Margen arriba y abajo para separar del resto, centrado horizontalmente */
+  max-width: 48rem;              /* Limita el ancho máximo */
+  background-color: #f9fafb;     /* Gris muy claro */
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border: 1px solid #d1d5db; /* gris claro */
+  border: 1px solid #cbd5e1;    /* Azul grisáceo claro */
 }
 
 /* Margen inferior para separar el formulario de otros contenedores */
@@ -27,23 +27,23 @@ input, textarea, button, label {
 /* Responsive */
 @media (max-width: 768px) {
   form {
-      margin: 1rem;
-      padding: 1.5rem;
+    margin: 1rem;
+    padding: 1.5rem;
   }
 }
 
 /* Estilo para el título dentro del formulario o con clase .titulo */
 form h2, form .titulo {
-  margin-top: 4rem;           /* Mucho espacio arriba */
-  margin-bottom: 2rem;        /* Espacio debajo */
+  margin-top: 4rem;             /* Mucho espacio arriba */
+  margin-bottom: 2rem;          /* Espacio debajo */
   font-family: 'Georgia', serif; /* Fuente serif elegante */
   font-weight: 700;
-  font-size: 2.5rem;          /* Tamaño grande */
-  color: #b45309;             /* Un tono cálido (amarillo oscuro) */
-  letter-spacing: 0.1em;      /* Espaciado entre letras */
-  text-align: center;         /* Centrar el texto */
-  text-transform: uppercase;  /* Todo en mayúsculas */
-  user-select: none;          /* No seleccionar el texto (opcional) */
+  font-size: 2.5rem;            /* Tamaño grande */
+  color: #2563eb;               /* Azul intenso */
+  letter-spacing: 0.1em;        /* Espaciado entre letras */
+  text-align: center;           /* Centrar el texto */
+  text-transform: uppercase;    /* Todo en mayúsculas */
+  user-select: none;            /* No seleccionar el texto (opcional) */
 }
 
 /* Si el título está fuera del form o se usa la clase directamente */
@@ -53,9 +53,85 @@ form h2, form .titulo {
   font-family: 'Georgia', serif;
   font-weight: 700;
   font-size: 2.5rem;
-  color: #b45309;
+  color: #2563eb;
   letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
   user-select: none;
+}
+
+/* Inputs y textarea */
+input, textarea, select {
+  border: 1px solid #cbd5e1;            /* Azul grisáceo */
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #1e293b;                       /* Azul oscuro */
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #3b82f6;                /* Azul vivo para enfoque */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Botón */
+button {
+  background-color: #3b82f6;            /* Azul vivo */
+  color: white;
+  font-weight: 700;
+  padding: 1rem 5rem;
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:disabled, button[disabled] {
+  background-color: #93c5fd;            /* Azul claro para disabled */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button:hover:not(:disabled) {
+  background-color: #2563eb;            /* Azul más oscuro en hover */
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
+}
+
+/* Mensajes de error */
+.text-red-600 {
+  color: #dc2626; /* Rojo para errores */
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Contenedor de previsualización de imagen */
+.image-preview-container {
+  margin-top: 1rem;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 1rem;
+  border: 2px solid #3b82f6;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+.image-preview-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Select personalizado para categorías */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 3rem;
+  cursor: pointer;
 }

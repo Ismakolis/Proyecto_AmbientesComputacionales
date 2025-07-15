@@ -7,12 +7,15 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink,CommonModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  cargando = false;
+  mensajeCarga = '';
 
   constructor(
     private fb: FormBuilder,
@@ -36,19 +39,29 @@ export class LoginComponent {
 
   iniciarSesion() {
     if (this.loginForm.invalid) return;
-
+  
+    this.cargando = true;
+    this.mensajeCarga = 'Validando tus credenciales...';
+  
     const { correo, contrasena } = this.loginForm.value;
-
+  
     this.loginService.login(correo, contrasena).subscribe({
       next: (res) => {
         this.toastr.success('Inicio de sesión exitoso', 'Bienvenido');
         localStorage.setItem('usuario', JSON.stringify(res.usuario));
-        this.router.navigate(['/app']);
+  
+        this.mensajeCarga = 'Cargando tu cuenta...';
+  
+        setTimeout(() => {
+          this.cargando = false;
+          this.router.navigate(['/app']);
+        }, 1500);
       },
       error: (err) => {
+        this.cargando = false;
         console.error(err);
         this.toastr.error('Correo o contraseña incorrectos', 'Error de autenticación');
       }
     });
   }
-}
+}  

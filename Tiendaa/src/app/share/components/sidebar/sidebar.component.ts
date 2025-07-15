@@ -20,6 +20,8 @@ export class SidebarComponent implements OnInit {
   categorias: Categoria[] = [];
   isVisible = false;
   mostrarCategorias: boolean = false;
+  saliendo: boolean = false;
+  
 
   constructor(
     private sidebarService: SidebarService,
@@ -55,18 +57,25 @@ export class SidebarComponent implements OnInit {
   }
 
   cerrarSesion() {
+    this.saliendo = true;
+  
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('usuario');
     }
-
+  
     this.logoutService.logout().subscribe({
       next: (res) => {
         console.log(res.mensaje);
-        this.router.navigate(['']);
+        setTimeout(() => {
+          this.saliendo = false;
+          this.router.navigate(['']);
+        }, 1500); // retardo para mostrar el mensaje
       },
       error: (err) => {
         console.error('Error al cerrar sesión', err);
+        this.saliendo = false;
       }
     });
   }
+  
 }

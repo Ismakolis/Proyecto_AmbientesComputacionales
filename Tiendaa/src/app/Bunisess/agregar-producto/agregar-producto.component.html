@@ -14,15 +14,15 @@
           stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
         </svg>
-        <span>Nombre de la Flor:</span>
+        <span>Nombre de la Computadora:</span>
       </label>
       <input formControlName="producto" type="text" id="nombre" name="nombre" required
         [ngClass]="{'border-red-600': productoForm.get('producto')?.invalid && productoForm.get('producto')?.touched}"
         class="w-full px-5 py-4 border border-yellow-300 rounded-xl focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition shadow-sm"
-        placeholder="Ej. Rosa Roja" />
+        placeholder="Ej. Laptop Gaming XYZ" />
       <div *ngIf="productoForm.get('producto')?.errors && productoForm.get('producto')?.touched"
         class="text-red-600 text-sm mt-2">
-        <span>El nombre de la flor <strong>es obligatorio</strong></span>
+        <span>El nombre de la computadora <strong>es obligatorio</strong></span>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         </svg>
         <span>Detalle de la Oferta (opcional):</span>
       </label>
-      <input formControlName="oferta" type="text" id="oferta" name="oferta" placeholder="Ej. 20% de descuento en rosas"
+      <input formControlName="oferta" type="text" id="oferta" name="oferta" placeholder="Ej. 15% de descuento en laptops"
         class="w-full px-5 py-4 border border-yellow-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-200 focus:border-yellow-400 transition shadow-sm" />
     </div>
 
@@ -47,12 +47,12 @@
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M19 11H5m14 0a2 2 0 002-2v-1a2 2 0 00-2-2H5a2 2 0 00-2 2v1a2 2 0 002 2m14 0v7a2 2 0 01-2 2H7a2 2 0 01-2-2v-7" />
         </svg>
-        <span>Descripción de la Flor:</span>
+        <span>Descripción de la Computadora:</span>
       </label>
       <textarea formControlName="descripcion" id="descripcion" name="descripcion" rows="5"
         [ngClass]="{'border-red-600': productoForm.get('descripcion')?.invalid && productoForm.get('descripcion')?.touched}"
         class="w-full px-5 py-4 border border-yellow-300 rounded-xl resize-none focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition shadow-sm"
-        placeholder="Describe las características y cuidados de la flor"></textarea>
+        placeholder="Describe características técnicas, especificaciones y usos"></textarea>
       <div *ngIf="productoForm.get('descripcion')?.errors && productoForm.get('descripcion')?.touched"
         class="text-red-600 text-sm mt-2">
         <span>La descripción <strong>es obligatoria</strong></span>
@@ -72,7 +72,7 @@
       <input formControlName="precio" type="number" id="precio" name="precio" min="0" step="0.01"
         [ngClass]="{'border-red-600': productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched}"
         class="w-full px-5 py-4 border border-yellow-300 rounded-xl focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition shadow-sm"
-        placeholder="Ej. 12.99" />
+        placeholder="Ej. 999.99" />
       <div *ngIf="productoForm.get('precio')?.errors && productoForm.get('precio')?.touched"
         class="text-red-600 text-sm mt-2">
         <span>El precio <strong>es obligatorio</strong></span>
@@ -91,45 +91,45 @@
       <input formControlName="stock" type="number" id="stock" name="stock" min="0"
         [ngClass]="{'border-red-600': productoForm.get('stock')?.invalid && productoForm.get('stock')?.touched}"
         class="w-full px-5 py-4 border border-yellow-300 rounded-xl focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition shadow-sm"
-        placeholder="Ej. 20" />
+        placeholder="Ej. 15" />
       <div *ngIf="productoForm.get('stock')?.errors && productoForm.get('stock')?.touched"
         class="text-red-600 text-sm mt-2">
         <span>El stock <strong>es obligatorio</strong></span>
       </div>
     </div>
-    <!--Categoria-->
+
+    <!-- Categoría -->
     <select formControlName="categoria" id="categoria" name="categoria"
       [ngClass]="{'border-red-600': productoForm.get('categoria')?.invalid && productoForm.get('categoria')?.touched}"
       class="w-full px-5 py-4 border border-yellow-300 rounded-xl focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition shadow-sm">
       <option value="" disabled selected>Seleccione una categoría</option>
-  <option *ngFor="let cat of categorias" [value]="cat._id">{{ cat.nombre }}</option>
+      <option *ngFor="let cat of categorias" [value]="cat._id">{{ cat.nombre }}</option>
     </select>
 
     <!-- Contenedor para la imagen -->
-<div class="md:col-span-2 flex flex-col">
-  <label for="imagen" class="block text-yellow-800 font-semibold mb-3 flex items-center space-x-3 text-lg">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M16 3v4M8 3v4m-5 8l4-4 4 4m4-4v6" />
-    </svg>
-    <span>Imagen de la Flor:</span>
-  </label>
-  <input
-    type="file"
-    id="imagen"
-    (change)="onFileSelected($event)"
-    accept="image/*"
-    class="cursor-pointer border border-yellow-300 rounded-xl px-4 py-3 shadow-sm focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition"
-  />
-  <div *ngIf="imagePreview" class="mt-4 w-48 h-48 rounded-3xl border-2 border-yellow-400 overflow-hidden shadow-lg">
-    <img [src]="imagePreview" alt="Previsualización de imagen" class="object-cover w-full h-full" />
-  </div>
-  <div *ngIf="productoForm.get('imagen')?.invalid && productoForm.get('imagen')?.touched" class="text-red-600 text-sm mt-2">
-    <span>La imagen <strong>es obligatoria</strong></span>
-  </div>
-</div>
-
+    <div class="md:col-span-2 flex flex-col">
+      <label for="imagen" class="block text-yellow-800 font-semibold mb-3 flex items-center space-x-3 text-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M16 3v4M8 3v4m-5 8l4-4 4 4m4-4v6" />
+        </svg>
+        <span>Imagen de la Computadora:</span>
+      </label>
+      <input
+        type="file"
+        id="imagen"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        class="cursor-pointer border border-yellow-300 rounded-xl px-4 py-3 shadow-sm focus:outline-none focus:ring-6 focus:ring-yellow-300 focus:border-yellow-500 transition"
+      />
+      <div *ngIf="imagePreview" class="mt-4 w-48 h-48 rounded-3xl border-2 border-yellow-400 overflow-hidden shadow-lg">
+        <img [src]="imagePreview" alt="Previsualización de imagen" class="object-cover w-full h-full" />
+      </div>
+      <div *ngIf="productoForm.get('imagen')?.invalid && productoForm.get('imagen')?.touched" class="text-red-600 text-sm mt-2">
+        <span>La imagen <strong>es obligatoria</strong></span>
+      </div>
+    </div>
 
   </div>
 
