@@ -29,6 +29,9 @@ app.use('/api/productos', require('./routes/productos'));
 app.use('/api/carrito', require('./routes/carrito'));
 app.use('/api/categorias',require('./routes/categoriaRoutes'));
 app.use('/api/registroUser', require('./routes/usuarioRegistro'));
+
+app.use('/api/clientes', require('./routes/clienteRoutes'));
+
 //api para cerrar la secion
 app.use('/api/logout',require('./routes/usuariologout'));
 
@@ -37,7 +40,7 @@ app.use('/api/logout',require('./routes/usuariologout'));
 app.use('/api', require('./routes/usuarioRoutes'));
 
 app.get('/api/usuarioSesion', verificarToken, require('./routes/usuarioRoutes'));
-
+app.use('/api', require('./routes/pago'));
 
 
 

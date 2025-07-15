@@ -1,10 +1,10 @@
-<div class="px-4 py-3 lg:px-6 bg-gradient-to-r from-orange-400 via-red-400 to-red-500 shadow-md">
+<div class="px-4 py-3 lg:px-6 bg-gradient-to-r from-blue-600 via-indigo-700 to-blue-800 shadow-md">
   <div class="flex items-center justify-between">
     <!-- IZQUIERDA -->
     <div class="flex items-center space-x-4">
       <!-- Botón hamburguesa -->
       <button (click)="toggleSidebar()" aria-expanded="true" aria-controls="sidebar"
-        class="lg:hidden text-white hover:text-yellow-200 p-2 rounded-lg hover:bg-red-600 focus:ring-2 focus:ring-yellow-300 transition shadow-sm">
+        class="lg:hidden text-white hover:text-blue-300 p-2 rounded-lg hover:bg-indigo-900 focus:ring-2 focus:ring-blue-400 transition shadow-sm">
         <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd"
             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
@@ -18,10 +18,10 @@
       </button>
 
       <!-- Logo -->
-      <a href="#" class="flex items-center text-white hover:text-yellow-200 transition font-semibold text-xl">
-        <img src="https://img.favpng.com/21/7/2/ecoflor-png-favpng-Q7uJNrwkPDZK0XAvD9mFcadXE.jpg"
-          alt="EcoFlor Logo" class="h-7 w-7 mr-2 object-contain rounded-full shadow-sm" />
-        <span>EcoFlor Arte</span>
+      <a href="#" class="flex items-center text-white hover:text-blue-300 transition font-semibold text-xl">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+          alt="TechStore Logo" class="h-7 w-7 mr-2 object-contain rounded-full shadow-sm" />
+        <span>TechStore</span>
       </a>
     </div>
 
@@ -29,7 +29,7 @@
     <div class="flex items-center space-x-4">
       <!-- Botón carrito -->
       <a routerLink="carrito"
-        class="bg-yellow-400 hover:bg-yellow-500 text-red-900 rounded-full p-3 shadow-md transition hover:scale-110 flex items-center justify-center">
+        class="bg-blue-400 hover:bg-blue-500 text-white rounded-full p-3 shadow-md transition hover:scale-110 flex items-center justify-center">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4"></path>
           <circle cx="7" cy="21" r="1"></circle>
@@ -39,7 +39,7 @@
 
       <!-- Botón login -->
       <a *ngIf="!isLoggedIn" routerLink="/login"
-        class="bg-yellow-400 hover:bg-yellow-500 text-red-900 px-5 py-2 rounded-full font-medium shadow-md transition hover:scale-105 text-sm">
+        class="bg-blue-400 hover:bg-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-md transition hover:scale-105 text-sm">
         Iniciar sesión
       </a>
 
@@ -47,7 +47,7 @@
       <img *ngIf="isLoggedIn"
         [src]="'https://picsum.photos/40?random=' + randomSeed"
         alt="Perfil"
-        class="w-9 h-9 rounded-full object-cover border-2 border-yellow-300 shadow-md hover:scale-105 transition duration-300 cursor-pointer" />
+        class="w-9 h-9 rounded-full object-cover border-2 border-blue-300 shadow-md hover:scale-105 transition duration-300 cursor-pointer" />
     </div>
   </div>
 </div>

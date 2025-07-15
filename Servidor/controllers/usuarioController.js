@@ -9,7 +9,7 @@ exports.getUsuarios = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener usuarios', error });
   }
 };
-// ✅ Obtener usuario en base a la sesión (token)
+
 exports.getUsuarioSesion = async (req, res) => {
   try {
     const usuario = await UsuarioLogin.findById(req.usuario.id).select('-contrasena');
@@ -31,5 +31,17 @@ exports.getUsuarioPorCorreo = async (req, res) => {
     res.json(usuario);
   } catch (error) {
     res.status(500).json({ message: 'Error al buscar usuario', error });
+  }
+};
+exports.obtenerUsuarioPorId = async (req, res) => {
+  try {
+    const usuario = await UsuarioLogin.findById(req.params.id).select('-contrasena');
+    if (!usuario) {
+      return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+    }
+    res.json(usuario);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al obtener usuario' });
   }
 };

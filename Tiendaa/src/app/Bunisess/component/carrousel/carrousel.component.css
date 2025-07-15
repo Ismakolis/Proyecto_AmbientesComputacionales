@@ -30,25 +30,21 @@ body {
     position: relative;
     overflow: hidden;
 
-    /* Amor */
+    /* Laptops */
     &:nth-of-type(1) {
-      background: url("https://images.pexels.com/photos/714258/pexels-photo-714258.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-        no-repeat 50% / cover;
+      background: url("https://cdn-icons-png.flaticon.com/512/2921/2921822.png") no-repeat center / cover;
     }
-    /* Cumpleaños */
+    /* Computadoras de Escritorio */
     &:nth-of-type(2) {
-      background: url("https://images.pexels.com/photos/931162/pexels-photo-931162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-        no-repeat 50% / cover;
+      background: url("https://cdn-icons-png.flaticon.com/512/1680/1680357.png") no-repeat center / cover;
     }
-    /* Consolación */
+    /* Accesorios */
     &:nth-of-type(3) {
-      background: url("https://images.unsplash.com/photo-1635934952380-7d6a05d10e41?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmxvcmVzJTIwc3VhdmVzfGVufDB8fDB8fHww")
-        no-repeat 50% / cover;
+      background: url("https://cdn-icons-png.flaticon.com/512/715/715676.png") no-repeat center / cover;
     }
-    /* Decoración */
+    /* Monitores */
     &:nth-of-type(4) {
-      background: url("https://images.pexels.com/photos/931176/pexels-photo-931176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-        no-repeat 50% / cover;
+      background: url("https://cdn-icons-png.flaticon.com/512/3064/3064197.png") no-repeat center / cover;
     }
 
     .content {
