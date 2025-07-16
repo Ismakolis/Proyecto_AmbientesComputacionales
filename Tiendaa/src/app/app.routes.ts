@@ -99,6 +99,12 @@ export const routes: Routes = [
       {
         path: 'gracias',
         loadComponent: () => import('./Bunisess/gracias/gracias.component').then(m => m.GraciasComponent)
+      },
+      {
+        path: 'proveedores',
+        loadComponent: () =>
+          import('./Bunisess/prov/prov').then((m) => m.Prov),
+        canActivate: [AdminGuard] // Puedes quitar esto si no usas roles
       }
 
 
