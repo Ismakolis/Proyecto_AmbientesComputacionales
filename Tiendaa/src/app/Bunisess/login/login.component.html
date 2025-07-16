@@ -1,19 +1,19 @@
 <div class="min-h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 py-10"
-     style="background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80');">
+     style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230526/pngtree-tech-background-image_2655178.jpg');">
   
-  <div class="backdrop-blur-sm bg-white/80 rounded-xl shadow-xl w-full max-w-6xl p-8 grid md:grid-cols-2 items-center gap-10">
+  <div class="backdrop-blur-sm bg-white/70 rounded-xl shadow-2xl w-full max-w-6xl p-8 grid md:grid-cols-2 items-center gap-10">
 
     <!-- Texto lateral -->
     <div>
       <h2 class="text-3xl lg:text-5xl font-bold text-slate-900">
-        Bienvenido a Floristería Aroma
+        Bienvenido a TecnoStore
       </h2>
       <p class="mt-6 text-slate-600 text-sm leading-relaxed">
-        Inicia sesión y descubre arreglos florales encantadores, ofertas exclusivas y un servicio que florece con amor.
+        Inicia sesión para descubrir las últimas computadoras, accesorios tecnológicos y promociones exclusivas.
       </p>
       <p class="mt-12 text-sm text-slate-700">
-        ¿Aún no tienes cuenta?
-        <a routerLink="/registro" class="text-pink-600 font-semibold hover:underline ml-1">Regístrate aquí</a>
+        ¿Aún no tienes una cuenta?
+        <a routerLink="/registro" class="text-blue-600 font-semibold hover:underline ml-1">Regístrate aquí</a>
       </p>
     </div>
 
@@ -26,8 +26,8 @@
         <div>
           <label class='text-sm text-slate-800 font-medium mb-2 block'>Correo electrónico</label>
           <input formControlName="correo" type="email" required
-            class="bg-slate-100 w-full text-sm text-slate-800 px-4 py-3 rounded-md border border-gray-200 focus:border-pink-600 focus:bg-transparent"
-            placeholder="Ingresa tu correo" />
+            class="bg-gray-100 w-full text-sm text-slate-800 px-4 py-3 rounded-md border border-gray-300 focus:border-blue-600 focus:bg-white"
+            placeholder="correo@tecnostore.com" />
           <p *ngIf="correo?.touched && correo?.errors?.['required']" class="text-red-500 text-sm mt-1">
             El correo es obligatorio.
           </p>
@@ -40,7 +40,7 @@
         <div>
           <label class='text-sm text-slate-800 font-medium mb-2 block'>Contraseña</label>
           <input formControlName="contrasena" type="password" required
-            class="bg-slate-100 w-full text-sm text-slate-800 px-4 py-3 rounded-md border border-gray-200 focus:border-pink-600 focus:bg-transparent"
+            class="bg-gray-100 w-full text-sm text-slate-800 px-4 py-3 rounded-md border border-gray-300 focus:border-blue-600 focus:bg-white"
             placeholder="Ingresa tu contraseña" />
           <p *ngIf="contrasena?.touched && contrasena?.errors?.['required']" class="text-red-500 text-sm mt-1">
             La contraseña es obligatoria.
@@ -50,11 +50,11 @@
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div class="flex items-center">
             <input id="remember-me" name="remember-me" type="checkbox"
-              class="h-4 w-4 text-pink-600 border-slate-300 rounded" />
+              class="h-4 w-4 text-blue-600 border-slate-300 rounded" />
             <label for="remember-me" class="ml-3 block text-sm text-slate-500">Recuérdame</label>
           </div>
           <div class="text-sm">
-            <a href="javascript:void(0);" class="text-pink-600 hover:text-pink-500 font-medium">
+            <a href="#" class="text-blue-600 hover:text-blue-500 font-medium">
               ¿Olvidaste tu contraseña?
             </a>
           </div>
@@ -63,19 +63,19 @@
 
       <div class="mt-12">
         <button type="submit" [disabled]="loginForm.invalid"
-          class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-pink-600 hover:bg-pink-700 focus:outline-none cursor-pointer">
+          class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none cursor-pointer">
           Iniciar sesión
         </button>
       </div>
     </form>
   </div>
+
   <!-- Cargando... -->
-<div *ngIf="cargando" class="fixed inset-0 z-50 bg-white bg-opacity-90 flex items-center justify-center">
-  <div class="text-center">
-    <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin mx-auto"></div>
-    <p class="mt-4 text-lg font-semibold text-indigo-700">{{ mensajeCarga }}</p>
+  <div *ngIf="cargando" class="fixed inset-0 z-50 bg-white bg-opacity-90 flex items-center justify-center">
+    <div class="text-center">
+      <div class="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto"></div>
+      <p class="mt-4 text-lg font-semibold text-blue-700">{{ mensajeCarga }}</p>
+    </div>
   </div>
-</div>
 
 </div>
- 

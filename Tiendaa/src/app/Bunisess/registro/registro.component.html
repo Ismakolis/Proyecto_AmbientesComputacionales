@@ -1,32 +1,33 @@
 <div class="min-h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 py-10"
-  style="background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80');">
+  style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230526/pngtree-tech-background-image_2655178.jpg');">
+
   <div
-    class="grid md:grid-cols-2 items-center gap-10 max-w-6xl max-md:max-w-md w-full bg-white/90 p-10 rounded-xl shadow-lg">
+    class="grid md:grid-cols-2 items-center gap-10 max-w-6xl max-md:max-w-md w-full bg-white/70 backdrop-blur-md p-10 rounded-xl shadow-2xl">
 
     <!-- Columna izquierda: texto informativo -->
     <div>
       <h2 class="lg:text-5xl text-3xl font-bold lg:leading-[57px] text-slate-900">
         Crea tu cuenta gratis
       </h2>
-      <p class="text-sm mt-6 text-slate-500 leading-relaxed">
+      <p class="text-sm mt-6 text-slate-600 leading-relaxed">
         Regístrate para acceder a promociones exclusivas y realizar compras de forma rápida y segura.
       </p>
-      <p class="text-sm mt-12 text-slate-500">
+      <p class="text-sm mt-12 text-slate-600">
         ¿Ya tienes una cuenta?
-        <a routerLink="/login" class="text-pink-600 font-medium hover:underline ml-1">Inicia sesión aquí</a>
+        <a routerLink="/login" class="text-blue-600 font-medium hover:underline ml-1">Inicia sesión aquí</a>
       </p>
     </div>
 
     <!-- Columna derecha: formulario -->
     <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()"
-      class="max-w-md md:ml-auto w-full bg-white p-6 rounded-lg shadow-md">
+      class="max-w-md md:ml-auto w-full bg-white/50 backdrop-blur-lg p-6 rounded-lg shadow-lg">
       <h3 class="text-slate-900 lg:text-3xl text-2xl font-bold mb-8">Registro</h3>
 
       <div class="space-y-4">
         <!-- Correo -->
         <div>
           <input type="email" formControlName="correo" placeholder="Correo"
-            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:bg-white" />
+            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white" />
           <p *ngIf="correo?.touched && correo?.errors?.['required']" class="text-red-500 text-sm mt-1">El correo es
             obligatorio.</p>
           <p *ngIf="correo?.touched && correo?.errors?.['email']" class="text-red-500 text-sm mt-1">Ingresa un correo
@@ -36,7 +37,7 @@
         <!-- Contraseña -->
         <div>
           <input type="password" formControlName="contrasena" placeholder="Contraseña"
-            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:bg-white" />
+            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white" />
           <p *ngIf="contrasena?.touched && contrasena?.errors?.['required']" class="text-red-500 text-sm mt-1">La
             contraseña es obligatoria.</p>
         </div>
@@ -44,7 +45,7 @@
         <!-- Nombre -->
         <div>
           <input type="text" formControlName="nombre" placeholder="Nombre"
-            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:bg-white" />
+            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white" />
           <p *ngIf="nombre?.touched && nombre?.errors?.['required']" class="text-red-500 text-sm mt-1">
             El nombre es obligatorio.
           </p>
@@ -56,7 +57,7 @@
         <!-- Apellido -->
         <div>
           <input type="text" formControlName="apellido" placeholder="Apellido"
-            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:bg-white" />
+            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white" />
           <p *ngIf="apellido?.touched && apellido?.errors?.['required']" class="text-red-500 text-sm mt-1">
             El apellido es obligatorio.
           </p>
@@ -68,7 +69,7 @@
         <!-- Teléfono -->
         <div>
           <input type="tel" formControlName="telefono" placeholder="Teléfono (opcional)"
-            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:bg-white" />
+            class="w-full px-4 py-3 border border-gray-200 rounded-md bg-slate-100 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white" />
           <p *ngIf="telefono?.touched && telefono?.errors?.['pattern']" class="text-red-500 text-sm mt-1">
             El teléfono solo puede contener números.
           </p>
@@ -76,7 +77,7 @@
       </div>
 
       <button type="submit" [disabled]="registroForm.invalid"
-        class="w-full mt-8 bg-pink-600 text-white font-semibold py-2.5 rounded-md hover:bg-pink-700 transition-colors duration-300">
+        class="w-full mt-8 bg-blue-600 text-white font-semibold py-2.5 rounded-md hover:bg-blue-700 transition-colors duration-300">
         Registrarse
       </button>
     </form>

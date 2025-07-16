@@ -103,8 +103,7 @@ export const routes: Routes = [
       {
         path: 'proveedores',
         loadComponent: () =>
-          import('./Bunisess/prov/prov').then((m) => m.Prov),
-        canActivate: [AdminGuard] // Puedes quitar esto si no usas roles
+          import('./Bunisess/prov/prov').then((m) => m.Prov)
       }
 
 
