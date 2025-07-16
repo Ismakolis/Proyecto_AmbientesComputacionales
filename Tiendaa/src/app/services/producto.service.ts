@@ -1,33 +1,31 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface Producto {
   _id: string;
   nombre: string;
   precio: number;
-  descripcion:string,
-  stock:number;
+  descripcion: string;
+  stock: number;
   imagen: string;
-  oferta:number;
+  oferta: number;
   categoriaId: number;
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  url = 'http://localhost:4000/api/productos/'
+  private endpoint = 'productos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiService) {}
 
   getProductos(): Observable<any> {
-    return this.http.get(this.url);
+    return this.api.get(`${this.endpoint}`);
   }
 
-
   obtenerPorCategoria(id: string): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`http://localhost:4000/api/productos/categoria/${id}`);
+    return this.api.get<Producto[]>(`${this.endpoint}/categoria/${id}`);
   }
 }

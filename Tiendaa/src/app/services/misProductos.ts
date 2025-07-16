@@ -1,36 +1,37 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 import { Producto } from '../models/productos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MisProductosService {
-  url = 'http://localhost:4000/api/misProductos/'
+  private endpoint = 'misProductos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiService) {}
 
   getProductos(): Observable<any> {
-    return this.http.get(this.url);
+    return this.api.get(`${this.endpoint}`);
   }
 
-  eliminarProductos(id:String): Observable<any>{
-    return this.http.delete(this.url + id);
+  eliminarProductos(id: String): Observable<any> {
+    return this.api.delete(`${this.endpoint}/${id}`);
   }
 
-  guardarProductos(producto: Producto):Observable<any>{
-    return  this.http.post(this.url, producto);
-  }
-  obtenerProducto(id:string):Observable<any>{
-    return this.http.get(this.url+ id);
+  guardarProductos(producto: Producto): Observable<any> {
+    return this.api.post(this.endpoint, producto);
   }
 
-  editarPorducto(id: string , producto: Producto):Observable<any>{
-    return this.http.put(this.url + id ,producto)
+  obtenerProducto(id: string): Observable<any> {
+    return this.api.get(`${this.endpoint}/${id}`);
   }
+
+  editarPorducto(id: string, producto: Producto): Observable<any> {
+    return this.api.put(`${this.endpoint}/${id}`, producto);
+  }
+
   subirImagen(id: string, formData: FormData): Observable<any> {
-  return this.http.post(this.url + 'subir-imagen/' + id, formData);
-}
-
+    return this.api.uploadFormData(`${this.endpoint}/subir-imagen/${id}`, formData);
+  }
 }

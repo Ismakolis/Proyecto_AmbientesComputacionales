@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface Usuario {
   _id: string;
@@ -15,14 +15,9 @@ export interface Usuario {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:4000/api'; 
-
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   getUsuarioSesion(): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/usuarioSesion`, {
-      withCredentials: true 
-    });
-
+    return this.api.get<Usuario>('usuarioSesion');
   }
 }

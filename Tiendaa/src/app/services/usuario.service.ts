@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface Usuario {
   correo: string;
@@ -14,16 +14,15 @@ export interface Usuario {
   providedIn: 'root'
 })
 export class UsuarioService {
+  private endpoint = 'usuarios';
 
-  private apiUrl = 'http://localhost:4000/api/usuarios';
-
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiService) {}
 
   getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.apiUrl);
+    return this.api.get<Usuario[]>(this.endpoint);
   }
 
   getUsuarioPorCorreo(correo: string): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiUrl}/${correo}`);
+    return this.api.get<Usuario>(`${this.endpoint}/${correo}`);
   }
 }

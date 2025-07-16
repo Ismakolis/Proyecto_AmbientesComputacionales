@@ -1,26 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
-  providedIn: 'root' 
+  providedIn: 'root'
 })
 export class registroService {
-  private apiUrl = 'http://localhost:4000/api/registroUser';
+  private endpoint = 'registroUser';
 
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   registrarUsuario(usuario: { correo: string; contrasena: string; nombre: string; apellido: string; telefono?: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, usuario);
+    return this.api.post(`${this.endpoint}/register`, usuario);
   }
-  actualizarCliente(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/update/${id}`, data);
-  }
-  
-  obtenerClientePorId(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/get/${id}`);
-  }
-  
-  }
-  
 
+  actualizarCliente(id: string, data: any): Observable<any> {
+    return this.api.put(`${this.endpoint}/update/${id}`, data);
+  }
+
+  obtenerClientePorId(id: string): Observable<any> {
+    return this.api.get(`${this.endpoint}/get/${id}`);
+  }
+}
