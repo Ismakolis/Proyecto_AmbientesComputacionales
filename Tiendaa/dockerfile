@@ -1,0 +1,20 @@
+# Imagen base
+FROM node:22-alpine
+
+# Crear directorio de trabajo
+WORKDIR /app
+
+# Copiar package.json y package-lock.json
+COPY package*.json ./
+
+# Instalar dependencias (usa --force si es necesario)
+RUN npm install --force
+
+# Copiar el resto del código
+COPY . .
+
+# Exponer el puerto que usará Angular (ng serve)
+EXPOSE 4200
+
+# Comando para correr la app en desarrollo con host 0.0.0.0
+CMD ["npm", "start", "--", "--host", "0.0.0.0"]

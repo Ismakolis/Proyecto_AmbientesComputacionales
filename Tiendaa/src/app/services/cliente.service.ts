@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface Cliente {
   _id?: string;
@@ -15,23 +15,23 @@ export interface Cliente {
   providedIn: 'root'
 })
 export class ClienteService {
-  private apiUrl = 'http://localhost:4000/api/clientes';
+  private endpoint = 'clientes';
 
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   obtenerClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.apiUrl, { withCredentials: true });
+    return this.api.get<Cliente[]>(this.endpoint);
   }
 
   obtenerPorRol(rol: string): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(`${this.apiUrl}/rol/${rol}`, { withCredentials: true });
+    return this.api.get<Cliente[]>(`${this.endpoint}/rol/${rol}`);
   }
 
   actualizarCliente(id: string, cliente: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>(`${this.apiUrl}/${id}`, cliente, { withCredentials: true });
+    return this.api.put<Cliente>(`${this.endpoint}/${id}`, cliente);
   }
 
   eliminarCliente(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true });
+    return this.api.delete(`${this.endpoint}/${id}`);
   }
 }

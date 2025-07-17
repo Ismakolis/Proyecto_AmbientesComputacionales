@@ -31,9 +31,11 @@ app.use('/api/categorias',require('./routes/categoriaRoutes'));
 app.use('/api/registroUser', require('./routes/usuarioRegistro'));
 
 app.use('/api/clientes', require('./routes/clienteRoutes'));
+app.use('/api/proveedores',require('./routes/priveedor.routes'));
 
 //api para cerrar la secion
 app.use('/api/logout',require('./routes/usuariologout'));
+
 
 
 //usuarios

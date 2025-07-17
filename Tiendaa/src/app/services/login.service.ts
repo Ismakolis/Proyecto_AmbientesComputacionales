@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface Usuario {
   correo: string;
@@ -14,19 +14,15 @@ export interface Usuario {
   providedIn: 'root'
 })
 export class LoginService {
-  private URL = 'http://localhost:4000/api/loginUser';
+  private endpoint = 'loginUser';
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiService) {}
 
   login(correo: string, contrasena: string): Observable<any> {
-    const body = { correo, contrasena };
-    return this.http.post(`${this.URL}/login`, body, {
-      withCredentials: true
-    });
+    return this.api.post(`${this.endpoint}/login`, { correo, contrasena });
   }
+
   getUsuarioSesion(): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.URL}/usuarioSesion`, { withCredentials: true });
+    return this.api.get<Usuario>(`${this.endpoint}/usuarioSesion`);
   }
-
-
-  }
+}

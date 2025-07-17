@@ -1,6 +1,7 @@
+// src/app/services/categoria.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface Categoria {
   _id?: string;
@@ -12,16 +13,13 @@ export interface Categoria {
   providedIn: 'root'
 })
 export class CategoriaService {
-  private url = 'http://localhost:4000/api/categorias';
-
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   obtenerCategorias(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.url);
+    return this.api.get<Categoria[]>('categorias');
   }
 
-
-  crearCategoria(categoria: Categoria):Observable<any>{
-      return  this.http.post(this.url, categoria);
-    }
+  crearCategoria(categoria: Categoria): Observable<any> {
+    return this.api.post('categorias', categoria);
+  }
 }

@@ -13,7 +13,7 @@ import { PLATFORM_ID } from '@angular/core';
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css'] 
 })
 export class SidebarComponent implements OnInit {
   rol: string = 'cliente';
@@ -71,7 +71,7 @@ export class SidebarComponent implements OnInit {
           this.router.navigate(['']);
         }, 1500); // retardo para mostrar el mensaje
       },
-      error: (err) => {
+      error: (err : any) => {
         console.error('Error al cerrar sesión', err);
         this.saliendo = false;
       }
